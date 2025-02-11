@@ -17,3 +17,4 @@ class NewsSucsessgState extends Newssates {
 class changeSelectedIndexState extends Newssates {
    
 }
+class initState extends Newssates{}

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/UI/GeneralScreen.dart';
 import 'package:news_app/UI/NewsItemUI.dart';
 import 'package:news_app/cubit/newsViewModel.dart';
+import 'package:news_app/cubit/searchViewModle.dart';
 import 'package:news_app/cubit/states/newsSates.dart';
 import 'package:news_app/di.dart';
 import 'package:news_app/utils/appColors.dart';
@@ -15,18 +16,17 @@ class Searchui extends StatefulWidget {
 }
 
 class _SearchuiState extends State<Searchui> {
-  Newsviewmodel veiwModle =
-      Newsviewmodel(newsRemoteRepository: injectNewsRepository());
-  
+  // Newsviewmodel veiwModle =
+  //     Newsviewmodel(newsRemoteRepository: injectNewsRepository());
+  Searchviewmodle veiwModle =
+      Searchviewmodle(newsRemoteRepository: injectNewsRepository());
   @override
   void initState() {
     super.initState();
-    
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
           title: TextField(
@@ -66,8 +66,7 @@ class _SearchuiState extends State<Searchui> {
       body: BlocProvider(
         create: (context) => veiwModle,
         child:
-      
-         BlocBuilder<Newsviewmodel, Newssates>(builder: (context, state) {
+            BlocBuilder<Searchviewmodle, Newssates>(builder: (context, state) {
           if (state is NewsLoadingState) {
             return Center(
               child: CircularProgressIndicator(),
@@ -100,7 +99,9 @@ class _SearchuiState extends State<Searchui> {
                 "this is changeSelectedIndexState ================================");
             // viewModel.getNews(widget.sources.id!);
           }
-          return Container();
+          return Container(
+            child: Text("Write in shearc fild "),
+          );
         }),
       ),
     );
